@@ -1,0 +1,39 @@
+### Make fileのテンプレート
+
+# ターゲットと依存ファイル名
+# target : dpend filename
+#			g++ -Wall depend filename
+#
+# 複数ファイルの場合
+# target : depend filename1 depend filename2 ...
+#			g++ -Wall depend filename1 depend filename2
+#
+# clean コマンド
+# clean:
+#		rm -f *.o target filename
+#
+# 変数を用いた自動化
+#
+# コンパイル方法
+# CXX = g++
+# 
+# ターゲット名
+# TARGET = target filename
+# 
+# C++コンパイルオプション
+# CXXFLAGS = -Wall -O2 -pipe
+#
+# 依存ファイル名
+# INCLUDES = -I + header file path
+# SRCS = depend filename1 depend filename2 ...
+# LIBS = -L + libs file path -l + libfilename
+#
+# オブジェクトファイルの作成
+# OBJS := $(SRCS: .cpp=.o)
+#
+# ターゲットファイルをオブジェクトへ
+# $(TARGET): $(OBJS)
+# 		$(CXX) -o $@ $(OBJS)
+#
+# clean:
+# 		rm -f $(TARGET) $(OBJS)
